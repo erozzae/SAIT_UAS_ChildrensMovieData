@@ -16,7 +16,7 @@ class GetApiChildrensDataController extends Controller
      */
     public function index()
     {
-        $response = Http::get('http://127.0.0.1:8000/api/childrens');
+        $response = Http::get('http://10.0.0.44:8000/api/childrens');
            
         $childrens = $response->json();
         // dd($childrens);
@@ -50,7 +50,7 @@ class GetApiChildrensDataController extends Controller
      */
     public function store(Request $request)
     {
-        $children = Http::asForm()->post('http://127.0.0.1:8000/api/add',[
+        $children = Http::asForm()->post('http://10.0.0.44:8000/api/add',[
            
             'nama'=> $request['nama'],
             'jenis_kelamin'=>$request['jenis_kelamin'],
@@ -92,7 +92,7 @@ class GetApiChildrensDataController extends Controller
     public function edit($id)
     {
           
-        $children = http::get('http://127.0.0.1:8000/api/children/'.$id);
+        $children = http::get('http://10.0.0.44:8000/api/children/'.$id);
         $children = $children->json();
         $children = $children['ChildrenDataById'];
       
@@ -115,7 +115,7 @@ class GetApiChildrensDataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $children = http::asForm()->PUT('http://127.0.0.1:8000/api/updateData/'.$id,[
+        $children = http::asForm()->PUT('http://10.0.0.44:8000/api/updateData/'.$id,[
 
             'nama'=> $request->nama,
             'jenis_kelamin'=>$request->jenis_kelamin,
@@ -147,7 +147,7 @@ class GetApiChildrensDataController extends Controller
     {
         
        
-        $children = http::get('http://127.0.0.1:8000/api/deleteData/'.$id);
+        $children = http::get('http://10.0.0.44:8000/api/deleteData/'.$id);
         $childrensData = ChildrensData::find($id);
         if($children != null){
             $childrensData->delete();
